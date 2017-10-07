@@ -3,7 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 public class Controller {
     @FXML
@@ -13,7 +13,7 @@ public class Controller {
     TextField output;
 
     @FXML
-    VBox dolnybox;
+    HBox dolnybox;
 
     public void initialize() {
         System.out.println("Startujemy");
