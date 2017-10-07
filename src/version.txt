@@ -1,1 +1,2 @@
-Wersja: develop-1
+Wersja: develop-1 -> fixgui2 .. ...
+slider / textfield / button
