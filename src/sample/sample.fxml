@@ -22,7 +22,7 @@
         </left>
 
         <bottom>
-            <HBox>
+            <HBox fx:id="dolnybox">
                 <Button onAction="#funkcja"> Click me </Button>
             </HBox>
         </bottom>
