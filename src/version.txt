@@ -1,1 +1,1 @@
-Wersja: develop-1
+Wersja: fixgui
