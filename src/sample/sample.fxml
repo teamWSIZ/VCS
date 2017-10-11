@@ -11,7 +11,11 @@
 
     <BorderPane>
         <top>
-            <Slider/>
+            <HBox>
+                <Slider fx:id="slider" onMouseDragged="#getValueFromSliderToTextField"/>
+                <Button onAction="#setValueFromTextFieldToSlider">Set</Button>
+                <TextField fx:id="sliderTextField" prefWidth="50"  alignment="CENTER"/>
+            </HBox>
         </top>
 
         <left>
