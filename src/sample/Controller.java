@@ -11,7 +11,7 @@ public class Controller {
 
 
     public void funkcja() {
-        System.out.println("hello");
+        System.out.println("test mojego brnacha");
     }
 
 }
