@@ -25,6 +25,14 @@ class Zbroja {
     public void setCount(int count) {
         this.count = count;
     }
+
+    @Override
+    public String toString() {
+        return "Zbroja{" +
+                "down=" + down +
+                ", count=" + count +
+                '}';
+    }
 }
 
 

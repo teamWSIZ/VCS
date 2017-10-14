@@ -25,10 +25,14 @@ public class Controller {
     @FXML
     VBox rightPanel;
 
+    Zbroja zbroja;
+
+
     public void initialize() {
         System.out.println("Startujemy");
         Button b = new Button("Drugi button");
         dolnybox.getChildren().add(b);
+        zbroja = new Zbroja();
     }
 
     public void actionAddComponent() {
@@ -103,11 +107,31 @@ public class Controller {
 
 
     public void dodajZbroje() {
-        Button b = new Button("Save");
-        rightPanel.getChildren().add(b);
         //trzeba dodać: VBox, do niego button,
         // textfield dla pola "down", textfield dla pola "count"
 
         //sklejanie: (tf1, tf2)->(vbox);  (vbox)->rightPanel
+        TextField downTf = new TextField();
+        TextField counTf = new TextField();
+        Button b = new Button("Save");
+
+        //ustawienie danych
+        downTf.setText("" + zbroja.getDown());
+        counTf.setText("" + zbroja.getCount());
+        downTf.setPromptText("wpisz wartość down");
+
+        //usatawienie akcji na przycisku
+        b.setOnAction(event -> {
+            zbroja.setDown(Integer.valueOf(downTf.getText()));
+            zbroja.setCount(Integer.valueOf(counTf.getText()));
+            System.out.println(zbroja);
+        });
+
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(downTf, counTf, b);
+        rightPanel.getChildren().add(hBox);
+
+
+
     }
 }
