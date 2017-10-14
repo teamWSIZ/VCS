@@ -2,6 +2,7 @@ package sample;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -101,4 +102,12 @@ public class Controller {
     }
 
 
+    public void dodajZbroje() {
+        Button b = new Button("Save");
+        rightPanel.getChildren().add(b);
+        //trzeba dodać: VBox, do niego button,
+        // textfield dla pola "down", textfield dla pola "count"
+
+        //sklejanie: (tf1, tf2)->(vbox);  (vbox)->rightPanel
+    }
 }

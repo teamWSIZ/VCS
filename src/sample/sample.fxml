@@ -10,6 +10,7 @@
 
     <BorderPane>
         <top>
+            <Button onAction="#dodajZbroje"> Dodaj zbroje </Button>
         </top>
 
         <right>

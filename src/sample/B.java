@@ -7,7 +7,7 @@ import java.util.List;
 
 class Zbroja {
     int down;
-    List<Point2D> model2D;
+    int count;
 
     public int getDown() {
         return down;
@@ -16,6 +16,14 @@ class Zbroja {
     public void setDown(int down) {
         System.out.println("Wartość zmiennej down zmieniana z " + this.down + " na " + down);
         this.down = down;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
 
