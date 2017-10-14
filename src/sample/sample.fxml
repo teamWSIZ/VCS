@@ -14,7 +14,7 @@
     <BorderPane>
       <top>
             <VBox style="-fx-border-style: solid;-fx-border-radius: 5" BorderPane.alignment="CENTER">
-                <Label textAlignment="CENTER">Text Fields</Label>
+                <Label textAlignment="CENTER">Text Fields:</Label>
                 <HBox alignment="CENTER_LEFT">
                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Input:       " />
                     <TextField fx:id="txt_input" />
@@ -26,15 +26,20 @@
                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Output:    " />
                     <TextField fx:id="txt_output" />
                 </HBox>
+                <Label textAlignment="CENTER">Progress Bar:</Label>
+                <HBox alignment="CENTER_LEFT">
+                    <Slider fx:id="slider" onDragDetected="#changeValue" onDragDone="#changeValue" />
+                    <Label fx:id="lbl_progress_bar_value" />
+                </HBox>
             </VBox>
       </top>
        <bottom>
            <VBox style="-fx-border-style: solid;-fx-border-radius: 5" BorderPane.alignment="CENTER">
-               <Label textAlignment="CENTER">Progress Bar</Label>
+               <Label textAlignment="CENTER">Create Component:</Label>
                <HBox alignment="CENTER_LEFT">
-                   <Slider fx:id="slider" onDragDetected="#changeValue" onDragDone="#changeValue" />
-                   <Label fx:id="lbl_progress_bar_value" />
+                   <Button onAction="#dodajZbroje"> Dodaj Zbroje </Button>
                </HBox>
+               <HBox fx:id="zbrojaPane"></HBox>
            </VBox>
        </bottom>
     </BorderPane>
