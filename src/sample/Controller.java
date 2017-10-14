@@ -18,7 +18,9 @@ public class Controller {
     @FXML
     Label lbl_progress_bar_value;
     @FXML
-    HBox zbrojaPane;
+    VBox zbrojaPane;
+
+    Zbroja zbroja = new Zbroja();
 
     public void funkcja() {
         txt_output.setText(txt_input.getText());
@@ -32,6 +34,18 @@ public class Controller {
         Button b = new Button("Save");
         TextField tf_down = new TextField();
         TextField tf_count = new TextField();
-        zbrojaPane.getChildren().addAll(tf_count, tf_down, b);
+        HBox hbox = new HBox();
+
+        tf_down.setText("" + zbroja.getDown());
+        tf_count.setText("" + zbroja.getCount());
+        tf_down.setPromptText("Wpisz wartosc Down");
+
+        b.setOnAction(event -> {
+            zbroja.setDown(Integer.valueOf(tf_down.getText()));
+            zbroja.setCount(Integer.valueOf(tf_down.getText()));
+        });
+
+        hbox.getChildren().addAll(tf_count, tf_down, b);
+        zbrojaPane.getChildren().add(hbox);
     }
 }

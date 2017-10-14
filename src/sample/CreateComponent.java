@@ -13,6 +13,14 @@ class Zbroja {
         this.down = down;
     }
 
+    @Override
+    public String toString() {
+        return "Zbroja{" +
+                "down=" + down +
+                ", count=" + count +
+                '}';
+    }
+
     public int getCount() {
         return count;
     }

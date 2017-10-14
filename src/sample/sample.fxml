@@ -39,7 +39,8 @@
                <HBox alignment="CENTER_LEFT">
                    <Button onAction="#dodajZbroje"> Dodaj Zbroje </Button>
                </HBox>
-               <HBox fx:id="zbrojaPane"></HBox>
+               <VBox fx:id="zbrojaPane">
+               </VBox>
            </VBox>
        </bottom>
     </BorderPane>
