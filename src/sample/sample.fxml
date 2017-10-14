@@ -11,6 +11,7 @@
     <BorderPane>
         <top>
             <Button onAction="#dodajZbroje"> Dodaj zbroje </Button>
+            <Button onAction="#dialogWithEdit"> Uruchom dialog</Button>
         </top>
 
         <right>

@@ -1,16 +1,42 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
+
+import java.util.Optional;
+
+
+class Game {
+    String name;
+    String dev;
+    Integer price;
+
+    public Game(String name, String dev, Integer price) {
+        this.name = name;
+        this.dev = dev;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "name='" + name + '\'' +
+                ", dev='" + dev + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
 
 public class Controller {
     @FXML
@@ -105,9 +131,67 @@ public class Controller {
     public void dodajZbroje() {
         Button b = new Button("Save");
         rightPanel.getChildren().add(b);
-        //trzeba dodać: VBox, do niego button,
+        //trzeba dodać: HBox, do niego button,
         // textfield dla pola "down", textfield dla pola "count"
 
-        //sklejanie: (tf1, tf2)->(vbox);  (vbox)->rightPanel
+        //sklejanie: (tf1, tf2)->(vbox);  (hbox)->rightPanel
+    }
+
+    public void dialogWithEdit() {
+        // Create the custom dialog.
+        Dialog<Game> dialog = new Dialog<>();
+        dialog.setTitle("New game dialog");
+        dialog.setHeaderText("Create new game");
+
+// Set the icon (must be included in the project).
+
+// Set the button types.
+        ButtonType loginButtonType = new ButtonType("Login", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+
+// Create the username and password labels and fields.
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField username = new TextField();
+        username.setPromptText("Game name");
+        PasswordField password = new PasswordField();
+        password.setPromptText("Game dev");
+
+        grid.add(new Label("Game name:"), 0, 0);
+        grid.add(username, 1, 0);
+        grid.add(new Label("Game dev:"), 0, 1);
+        grid.add(password, 1, 1);
+
+        Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+        loginButton.setDisable(true);
+
+        //zachowanie przy zmianie wartości
+        username.textProperty().addListener((observable, oldValue, newValue) -> {
+            loginButton.setDisable(newValue.trim().isEmpty());
+        });
+
+        dialog.getDialogPane().setContent(grid);
+
+// Request focus on the username field by default.
+        Platform.runLater(() -> username.requestFocus());
+
+// Convert the result to a username-password-pair when the login button is clicked.
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == loginButtonType) {
+                int g = Integer.valueOf(input.getText());
+                return new Game(username.getText(), password.getText(), g);
+            }
+            return null;
+        });
+
+        Optional<Game> result = dialog.showAndWait();
+
+        result.ifPresent(usernamePassword -> {
+            System.out.println(result.get());
+        });
+
     }
 }
