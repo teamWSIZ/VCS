@@ -1,4 +1,4 @@
-package sample;
+package Zajecia_1_i_2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
