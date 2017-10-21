@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import zajecia3.components.EditNumberComponent;
+import zajecia3.components.SliderEditNumberComponent;
 
 public class Controller {
     @FXML
@@ -24,7 +25,6 @@ public class Controller {
     //wykorzystanie komponentu edycji liczb
     public void addEditNumberComponent() {
         DoubleProperty liczba = new SimpleDoubleProperty(null, "speed", 3.14);
-        System.out.println(liczba);
         //callback dla akcji przy zmianie liczby (opcjonalne)
         liczba.addListener((observable, oldValue, newValue) -> {
             System.out.println("Liczba zmieniona na: " + newValue);
@@ -32,6 +32,10 @@ public class Controller {
         rightPanel.getChildren().add(new EditNumberComponent(liczba).getNode());
     }
 
+    public void addSliderEditNumberComponent() {
+        DoubleProperty liczba = new SimpleDoubleProperty(null, "pi", 3.14);
+        rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 3.0, 4.0).getNode());
+    }
 
 
 }
