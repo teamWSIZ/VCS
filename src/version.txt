@@ -1,1 +1,1 @@
-Wersja: component
+Wersja: zajecia3-structure
