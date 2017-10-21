@@ -31,6 +31,7 @@
             <HBox alignment="CENTER">
                 <Button onAction="#addEditNumberComponent"> Dodaj EditNumberComponent </Button>
                 <Button onAction="#addSliderEditNumberComponent"> Dodaj EditNumberComponent </Button>
+                <Button onAction="#addLoginPanel"> Dodaj Login </Button>
             </HBox>
         </top>
 

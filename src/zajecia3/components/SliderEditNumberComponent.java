@@ -41,7 +41,7 @@ public class SliderEditNumberComponent  {
         hBox.setAlignment(Pos.CENTER);
         hBox.setPrefHeight(30);
 
-        //opis tego czym jest liczba
+        //opis tego czym jest loginToken
         Label label = new Label(liczba.getName());
         label.setAlignment(Pos.BOTTOM_LEFT);
         label.setStyle("-fx-padding: 5px");
