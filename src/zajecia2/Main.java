@@ -1,4 +1,4 @@
-package sample;
+package zajecia2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

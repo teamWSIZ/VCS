@@ -1,8 +1,7 @@
-package sample;
+package zajecia2;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -57,51 +56,60 @@ public class Controller {
     }
 
     /*
-     * Cel: stworzenie panelu do edycji liczb ułamkowych z podstawową walidacją
+     * Cel: stworzenie komponentu do edycji liczb ułamkowych z podstawową walidacją
      *
      * Zadanie: zrobić z tego wygodny w użyciu komponent
      */
-    private void createComponent(DoubleProperty p) {
+    private void createComponent(DoubleProperty liczba) {
+        //box opakowujący komponent
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setPrefHeight(30);
 
-        TextField tf = new TextField();
-        if (p.getValue()!=null) {
-            tf.setText(p.getValue().toString());
+        //opis tego czym jest liczba
+        Label label = new Label(liczba.getName());
+        label.setAlignment(Pos.BOTTOM_LEFT);
+        label.setStyle("-fx-padding: 5px");
+
+
+        //pole do wpisywania liczb, z walidacją "just-in-time"
+        TextField input = new TextField();
+        if (liczba.getValue()!=null) {
+            input.setText(liczba.getValue().toString());
         }
-        tf.setPromptText("your value");
-        tf.textProperty().addListener((observable, oldValue, newValue) -> {
-            Double ins = null;
+        input.setPromptText("your value");
+        input.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                ins = Double.valueOf(newValue);
-                tf.setStyle("-fx-control-inner-background: lightgreen");
+                //sprawdzenie czy z pola tekstowego da się odczytać liczbę double
+                // (wyrzuca wyjątek, jeśli nie da się odczytać liczby; wyjątek łapiemy)
+                Double.valueOf(newValue);
+                input.setStyle("-fx-control-inner-background: lightgreen");
             } catch (Exception e) {
-                tf.setStyle("-fx-control-inner-background: lightcoral");
+                input.setStyle("-fx-control-inner-background: lightcoral");
             }
         });
 
-        Button setButton = new Button("accept");
-        setButton.setOnAction(event -> {
-            String txt = tf.getText();
+        //button w prawej części do zapisu wartości pola do zmiennej "liczba"
+        Button acceptButton = new Button("accept");
+        acceptButton.setOnAction(event -> {
+            String txt = input.getText();
             try {
                 Double d = Double.valueOf(txt);
-                p.setValue(d);
-                new Alert(Alert.AlertType.INFORMATION, "Value of " + p.getName() + " set to: " + d)
+                liczba.setValue(d);
+                new Alert(Alert.AlertType.INFORMATION, "Value of " + liczba.getName() + " set to: " + d)
                         .showAndWait();
-                tf.setStyle("");
+                input.setStyle("");
             } catch (NumberFormatException e) {
                 System.out.println("can't parse double");
             }
         });
 
-        Label l = new Label(p.getName());
-        l.setAlignment(Pos.BOTTOM_LEFT);
-        l.setStyle("-fx-padding: 5px");
+        //skomponowanie całości
+        hBox.getChildren().add(label);
+        hBox.getChildren().add(input);
+        hBox.getChildren().add(acceptButton);
 
-        hBox.getChildren().add(l);
-        hBox.getChildren().add(tf);
-        hBox.getChildren().add(setButton);
+        //dodanie do panelu
         rightPanel.getChildren().add(hBox);
     }
 

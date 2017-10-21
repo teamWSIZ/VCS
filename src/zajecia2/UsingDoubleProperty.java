@@ -1,18 +1,15 @@
-package sample;
+package zajecia2;
 
 
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 class Model {
     int g;
     int h;
 }
 
-public class A {
+public class UsingDoubleProperty {
 
     public static void main(String[] args) {
         /*
