@@ -15,7 +15,7 @@ import javafx.scene.layout.HBox;
  * Label:   (min) ----o--------- (max)  [3.14]
  *
  */
-public class SliderEditNumberComponent extends HBox {
+public class SliderEditNumberComponent  {
     HBox hBox;  //główny kontener
     DoubleProperty liczba;
     double min;
@@ -62,6 +62,7 @@ public class SliderEditNumberComponent extends HBox {
         slider.setMinorTickCount(5);
         slider.setBlockIncrement(10);
         slider.setStyle("-fx-padding: 10px");
+        //podpięcie do eventu przesunięcia slidera
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double liczbaValue = min + (max - min) * newValue.doubleValue() / 100;
             edit.setText(String.format( "%.2f", liczbaValue));

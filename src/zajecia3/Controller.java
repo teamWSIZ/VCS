@@ -35,6 +35,9 @@ public class Controller {
     public void addSliderEditNumberComponent() {
         DoubleProperty liczba = new SimpleDoubleProperty(null, "pi", 3.14);
         rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 3.0, 4.0).getNode());
+        rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 2.0, 4.0).getNode());
+        rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 1.0, 4.0).getNode());
+        rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 3.0, 4.0).getNode());
     }
 
 
