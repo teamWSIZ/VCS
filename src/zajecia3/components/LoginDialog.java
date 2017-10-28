@@ -70,6 +70,8 @@ public class LoginDialog {
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
+        //wszystko powyżej skopiowane ze strony źródłowej
+
         result.ifPresent(usernamePassword -> {
             //wywołanie funkcji przekazanej w argumencie -- tu zostanie wykonany kod klienta
             // (podany przez Controller)

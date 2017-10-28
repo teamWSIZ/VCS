@@ -50,24 +50,28 @@ public class Controller {
     public void addLoginPanel() {
         //BiPredicate to funkcja z dwoma argumentami która ma zwracać wartość boolean
         BiPredicate<String, String> funkcjaLogowania = (user, pass) -> {
-            if (user.equals("admin") && pass.equals("karramba")) {
-                userLabel.setText("Zalogowany jako [" + user + "]");
-                loggedIn = true;
-                return true;
-            }
-            loggedIn = false;
-            userLabel.setText("(niezalogowany)");
-            return false;
+            return doLogin(user, pass);
         };
         rightPanel.getChildren().add(new LoginComponent(funkcjaLogowania).getNode());
     }
 
-
     public void addLoginDialog() {
-        new LoginDialog().showAndWait((s, s2) -> {
+        new LoginDialog().showAndWait((username, password) -> {
             //Kod który zostanie wykonany po naciśnięciu "Login"
-            System.out.println("User:" + s + " Pass:" + s2);
-            return true;
+            return doLogin(username, password);
         });
     }
+
+    //Zadanie: cała logika logowania ma zostać umieszczona w funkcji poniżej
+    private boolean doLogin(String username, String password) {
+        if (username.equals("admin") && password.equals("karramba")) {
+            userLabel.setText("Zalogowany jako [" + username + "]");
+            loggedIn = true;
+            return true;
+        }
+        loggedIn = false;
+        userLabel.setText("(niezalogowany)");
+        return false;
+    }
+
 }
