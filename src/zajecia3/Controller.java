@@ -97,4 +97,9 @@ public class Controller {
         applicationService.addNews(newNewsDialog.getNews());
     }
 
+    public void showFullText(){
+        News news = (News) tableNews.getSelectionModel().getSelectedItem();
+        FullTextDialog fullTextDialog = new FullTextDialog(news);
+    }
+
 }

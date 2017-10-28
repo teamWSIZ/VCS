@@ -36,8 +36,8 @@ public class NewNewsDialog {
 
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
 
-        ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+        ButtonType oKButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(oKButtonType, ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -54,7 +54,7 @@ public class NewNewsDialog {
         grid.add(fulltext, 1, 1);
         grid.add(new Label("Text:"), 0, 1);
 
-        Node addButton = dialog.getDialogPane().lookupButton(loginButtonType);
+        Node addButton = dialog.getDialogPane().lookupButton(oKButtonType);
 
         titleOfNews.textProperty().addListener((observable, oldValue, newValue) -> {
             addButton.setDisable(newValue.isEmpty());
@@ -69,7 +69,7 @@ public class NewNewsDialog {
         Platform.runLater(() -> titleOfNews.requestFocus());
 
         dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == loginButtonType) {
+            if (dialogButton == oKButtonType) {
                 return new News(titleOfNews.getText(),fulltext.getText());
             }
             return null;

@@ -57,7 +57,7 @@
 
         <left>
             <VBox style="-fx-border-style: solid;-fx-border-radius: 5">
-                <TableView fx:id="tableNews">
+                <TableView fx:id="tableNews" onMouseClicked="#showFullText">
                     <columns>
                         <TableColumn  fx:id="newsColumn" text="News" prefWidth="300"/>
                     </columns>

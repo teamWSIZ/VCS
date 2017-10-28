@@ -58,5 +58,15 @@ public class News {
     public void setFulltext(String fulltext) {
         this.fulltext.set(fulltext);
     }
+
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", title=" + title +
+                ", fulltext=" + fulltext +
+                '}';
+    }
 }
 
