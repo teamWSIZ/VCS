@@ -11,6 +11,7 @@ import zajecia3.components.EditNumberComponent;
 import zajecia3.components.LoginComponent;
 import zajecia3.components.LoginDialog;
 import zajecia3.components.SliderEditNumberComponent;
+import zajecia3.service.ApplicationService;
 
 import java.util.function.BiPredicate;
 
@@ -23,6 +24,8 @@ public class Controller {
 
     Label userLabel;
     boolean loggedIn = false;
+
+    private ApplicationService applicationService = new ApplicationService();
 
     //Funkcja uruchamiana przy starcie aplikacji
     public void initialize() {
@@ -64,7 +67,7 @@ public class Controller {
 
     //Zadanie: cała logika logowania ma zostać umieszczona w funkcji poniżej
     private boolean doLogin(String username, String password) {
-        if (username.equals("admin") && password.equals("karramba")) {
+        if (applicationService.login(username, password)) {
             userLabel.setText("Zalogowany jako [" + username + "]");
             loggedIn = true;
             return true;
