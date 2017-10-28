@@ -2,12 +2,14 @@ package zajecia3;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import zajecia3.components.EditNumberComponent;
 import zajecia3.components.LoginComponent;
+import zajecia3.components.LoginDialog;
 import zajecia3.components.SliderEditNumberComponent;
 
 import java.util.function.BiPredicate;
@@ -46,6 +48,7 @@ public class Controller {
 
     //Dodanie panelu logowania
     public void addLoginPanel() {
+        //BiPredicate to funkcja z dwoma argumentami która ma zwracać wartość boolean
         BiPredicate<String, String> funkcjaLogowania = (user, pass) -> {
             if (user.equals("admin") && pass.equals("karramba")) {
                 userLabel.setText("Zalogowany jako [" + user + "]");
@@ -60,4 +63,11 @@ public class Controller {
     }
 
 
+    public void addLoginDialog() {
+        new LoginDialog().showAndWait((s, s2) -> {
+            //Kod który zostanie wykonany po naciśnięciu "Login"
+            System.out.println("User:" + s + " Pass:" + s2);
+            return true;
+        });
+    }
 }

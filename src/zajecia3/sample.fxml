@@ -40,7 +40,8 @@
             <HBox alignment="CENTER">
                 <Button onAction="#addEditNumberComponent"> +NumberEdit </Button>
                 <Button onAction="#addSliderEditNumberComponent"> +SliderNumberEdit </Button>
-                <Button onAction="#addLoginPanel"> +Login </Button>
+                <Button onAction="#addLoginPanel"> +LoginPanel </Button>
+                <Button onAction="#addLoginDialog"> +LoginDialog </Button>
             </HBox>
         </top>
 
