@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import zajecia3.components.AlertComponent;
 import zajecia3.components.EditNumberComponent;
 import zajecia3.components.SliderEditNumberComponent;
 
@@ -37,5 +38,8 @@ public class Controller {
         rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 3.0, 4.0).getNode());
     }
 
+    public void showAlertComponent(){
+        AlertComponent alertComponent = new AlertComponent();
+    }
 
 }
