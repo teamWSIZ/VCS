@@ -16,8 +16,8 @@ import zajecia3.service.ApplicationService;
 import java.util.function.BiPredicate;
 
 public class Controller {
-    @FXML
-    HBox dolnybox;
+//    @FXML
+//    HBox dolnybox;
 
     @FXML
     VBox rightPanel;
@@ -31,7 +31,7 @@ public class Controller {
     public void initialize() {
         rightPanel.getChildren().add(new Label("Panel na komponenty"));
         userLabel = new Label("(niezalogowany)");
-        dolnybox.getChildren().add(userLabel);
+//        dolnybox.getChildren().add(userLabel);
     }
 
     //wykorzystanie komponentu edycji liczb

@@ -58,13 +58,17 @@
         </left>
 
         <bottom>
-            <VBox alignment="CENTER">
-                <Label>Dolny panel</Label>
-                <HBox fx:id="dolnybox" style="-fx-border-style: solid">
-                    <Button> Add something </Button>
-               <TextField promptText="ggg" />
-                </HBox>
-            </VBox>
+            <HBox alignment="CENTER" prefWidth="600" style="-fx-border-style: solid">
+                <VBox prefWidth="200">
+                    <Label> Lista newsów</Label>
+                    <Label> aa</Label>
+                    <Label> bb</Label>
+                    <Label> cc</Label>
+                </VBox>
+                <VBox prefWidth="400">
+                    <Label> Full text </Label>
+                </VBox>
+            </HBox>
         </bottom>
     </BorderPane>
 
