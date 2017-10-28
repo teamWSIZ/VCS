@@ -1,1 +1,1 @@
-Wersja: zajecia3-component (tworzenie komponentów)
+Wersja: develop-2
