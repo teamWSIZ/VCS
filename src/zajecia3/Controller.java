@@ -2,12 +2,18 @@ package zajecia3;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import zajecia3.components.EditNumberComponent;
+import zajecia3.components.LoginComponent;
+import zajecia3.components.LoginDialog;
 import zajecia3.components.SliderEditNumberComponent;
+import zajecia3.service.ApplicationService;
+
+import java.util.function.BiPredicate;
 
 public class Controller {
     @FXML
@@ -16,10 +22,16 @@ public class Controller {
     @FXML
     VBox rightPanel;
 
+    Label userLabel;
+    boolean loggedIn = false;
+
+    private ApplicationService applicationService = new ApplicationService();
+
     //Funkcja uruchamiana przy starcie aplikacji
     public void initialize() {
-        Button b = new Button("Drugi button");
-        dolnybox.getChildren().add(b);
+        rightPanel.getChildren().add(new Label("Panel na komponenty"));
+        userLabel = new Label("(niezalogowany)");
+        dolnybox.getChildren().add(userLabel);
     }
 
     //wykorzystanie komponentu edycji liczb
@@ -37,5 +49,32 @@ public class Controller {
         rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 3.0, 4.0).getNode());
     }
 
+    //Dodanie panelu logowania
+    public void addLoginPanel() {
+        //BiPredicate to funkcja z dwoma argumentami która ma zwracać wartość boolean
+        BiPredicate<String, String> funkcjaLogowania = (user, pass) -> {
+            return doLogin(user, pass);
+        };
+        rightPanel.getChildren().add(new LoginComponent(funkcjaLogowania).getNode());
+    }
+
+    public void addLoginDialog() {
+        new LoginDialog().showAndWait((username, password) -> {
+            //Kod który zostanie wykonany po naciśnięciu "Login"
+            return doLogin(username, password);
+        });
+    }
+
+    //Zadanie: cała logika logowania ma zostać umieszczona w funkcji poniżej
+    private boolean doLogin(String username, String password) {
+        if (applicationService.login(username, password)) {
+            userLabel.setText("Zalogowany jako [" + username + "]");
+            loggedIn = true;
+            return true;
+        }
+        loggedIn = false;
+        userLabel.setText("(niezalogowany)");
+        return false;
+    }
 
 }

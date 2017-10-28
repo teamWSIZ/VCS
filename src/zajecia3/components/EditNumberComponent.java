@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-public class EditNumberComponent extends HBox {
+public class EditNumberComponent {
     HBox hBox;  //główny kontener
     DoubleProperty liczba;
 
@@ -28,7 +28,7 @@ public class EditNumberComponent extends HBox {
         hBox.setAlignment(Pos.CENTER);
         hBox.setPrefHeight(30);
 
-        //opis tego czym jest liczba
+        //opis tego czym jest loginToken
         Label label = new Label(liczba.getName());
         label.setAlignment(Pos.BOTTOM_LEFT);
         label.setStyle("-fx-padding: 5px");
@@ -51,7 +51,7 @@ public class EditNumberComponent extends HBox {
             }
         });
 
-        //button w prawej części do zapisu wartości pola do zmiennej "liczba"
+        //button w prawej części do zapisu wartości pola do zmiennej "loginToken"
         Button acceptButton = new Button("accept");
         acceptButton.setOnAction(event -> {
             String txt = input.getText();
