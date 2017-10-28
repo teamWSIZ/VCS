@@ -10,9 +10,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 <?import zajecia3.components.custom.CustomControl?>
-<VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zajecia3.Controller">
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zajecia3.Controller">
     <MenuBar fx:id="menuBar">
         <menus>
             <Menu text="File">
@@ -43,17 +45,23 @@
                 <Button onAction="#addSliderEditNumberComponent"> +SliderNumberEdit </Button>
                 <Button onAction="#addLoginPanel"> +LoginPanel </Button>
                 <Button onAction="#addLoginDialog"> +LoginDialog </Button>
+            <Button layoutX="299.0" layoutY="10.0" onAction="#showNewsDialog" text="DodajNewsDialog" />
             </HBox>
         </top>
 
         <right>
             <VBox fx:id="rightPanel" prefWidth="150">
-                <CustomControl text="Abra Kadabra"/>
+                <CustomControl text="Abra Kadabra" />
             </VBox>
         </right>
 
         <left>
             <VBox style="-fx-border-style: solid;-fx-border-radius: 5">
+                <TableView fx:id="tableNews">
+                    <columns>
+                        <TableColumn  fx:id="newsColumn" text="News" prefWidth="300"/>
+                    </columns>
+                </TableView>
             </VBox>
         </left>
 
