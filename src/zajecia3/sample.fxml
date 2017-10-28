@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zajecia3.Controller">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zajecia3.Controller">
     <MenuBar fx:id="menuBar">
         <menus>
             <Menu text="File">
                 <items>
                     <MenuItem text="New" />
-                    <MenuItem text="Open"/>
+                    <MenuItem text="Open" />
                     <SeparatorMenuItem />
                     <MenuItem text="Exit" />
                 </items>
@@ -29,14 +38,14 @@
     <BorderPane>
         <top>
             <HBox alignment="CENTER">
-                <Button onAction="#addEditNumberComponent"> Dodaj EditNumberComponent </Button>
-                <Button onAction="#addSliderEditNumberComponent"> Dodaj EditNumberComponent </Button>
-                <Button onAction="#addLoginPanel"> Dodaj Login </Button>
+                <Button onAction="#addEditNumberComponent"> +NumberEdit </Button>
+                <Button onAction="#addSliderEditNumberComponent"> +SliderNumberEdit </Button>
+                <Button onAction="#addLoginPanel"> +Login </Button>
             </HBox>
         </top>
 
         <right>
-            <VBox fx:id="rightPanel">
+            <VBox fx:id="rightPanel" prefWidth="150">
 
             </VBox>
         </right>
@@ -50,7 +59,8 @@
             <VBox alignment="CENTER">
                 <Label>Dolny panel</Label>
                 <HBox fx:id="dolnybox" style="-fx-border-style: solid">
-                    <Button > Add something </Button>
+                    <Button> Add something </Button>
+               <TextField promptText="ggg" />
                 </HBox>
             </VBox>
         </bottom>

@@ -2,15 +2,15 @@ package zajecia3;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import zajecia3.components.EditNumberComponent;
 import zajecia3.components.LoginComponent;
 import zajecia3.components.SliderEditNumberComponent;
+
+import java.util.function.BiPredicate;
 
 public class Controller {
     @FXML
@@ -19,10 +19,14 @@ public class Controller {
     @FXML
     VBox rightPanel;
 
+    Label userLabel;
+    boolean loggedIn = false;
+
     //Funkcja uruchamiana przy starcie aplikacji
     public void initialize() {
-        Button b = new Button("Drugi button");
-        dolnybox.getChildren().add(b);
+        rightPanel.getChildren().add(new Label("Panel na komponenty"));
+        userLabel = new Label("(niezalogowany)");
+        dolnybox.getChildren().add(userLabel);
     }
 
     //wykorzystanie komponentu edycji liczb
@@ -40,12 +44,19 @@ public class Controller {
         rightPanel.getChildren().add(new SliderEditNumberComponent(liczba, 3.0, 4.0).getNode());
     }
 
+    //Dodanie panelu logowania
     public void addLoginPanel() {
-        StringProperty userToken = new SimpleStringProperty("");
-        userToken.addListener((observable, oldValue, newValue) -> {
-            System.out.println("LOGOWNAIE DO BAZY");
-        });
-        rightPanel.getChildren().add(new LoginComponent(userToken).getNode());
+        BiPredicate<String, String> funkcjaLogowania = (user, pass) -> {
+            if (user.equals("admin") && pass.equals("karramba")) {
+                userLabel.setText("Zalogowany jako [" + user + "]");
+                loggedIn = true;
+                return true;
+            }
+            loggedIn = false;
+            userLabel.setText("(niezalogowany)");
+            return false;
+        };
+        rightPanel.getChildren().add(new LoginComponent(funkcjaLogowania).getNode());
     }
 
 
