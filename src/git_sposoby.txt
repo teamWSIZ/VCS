@@ -1,0 +1,20 @@
+
+Usunięcie ostatniego commit-a (czyli np. zrobiśmy coś czego chcemy
+się pozbyć):
+
+Before (log):
+73f85a9 zly
+fe97104 Version setup
+fc55137 Merge pull request #7 from teamWSIZ/develop-2
+69a202e Merge pull request #6 from teamWSIZ/newsMK
+36e1f41 NewsShow Update
+92fcf04 News Update
+
+git reset --hard fe97104
+
+After (log):
+fe97104 Version setup
+fc55137 Merge pull request #7 from teamWSIZ/develop-2
+69a202e Merge pull request #6 from teamWSIZ/newsMK
+36e1f41 NewsShow Update
+92fcf04 News Update
