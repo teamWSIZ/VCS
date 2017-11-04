@@ -94,7 +94,9 @@ public class Controller {
 
     public void showNewsDialog(){
         NewNewsDialog newNewsDialog = new NewNewsDialog();
-        applicationService.addNews(newNewsDialog.getNews());
+        if (newNewsDialog.getNews() != null){
+            applicationService.addNews(newNewsDialog.getNews());
+        }
     }
 
     public void showFullText(){
