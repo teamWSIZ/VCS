@@ -4,9 +4,9 @@
 - Mapowanie z numery siedzenia do pozycji na obrazku
   --> zrobić serwis mapowania: kliknięcie --> dialog o numer siedzenia lub opis
 
-(--> zrobione przz ElementService; trzeba zrobić tryb mapowania i
+(--> zrobione przez ElementService; trzeba zrobić tryb mapowania i
   zapis/wczytywanie z plików)
-  
+
 
 
 ------------------------
