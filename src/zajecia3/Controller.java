@@ -98,8 +98,10 @@ public class Controller {
     }
 
     public void showFullText(){
-        News news = (News) tableNews.getSelectionModel().getSelectedItem();
-        FullTextDialog fullTextDialog = new FullTextDialog(news);
+        if (tableNews.getSelectionModel().getSelectedItem() != null) {
+            News news = (News) tableNews.getSelectionModel().getSelectedItem();
+            FullTextDialog fullTextDialog = new FullTextDialog(news);
+            tableNews.getSelectionModel().clearSelection();
+        }
     }
-
 }
