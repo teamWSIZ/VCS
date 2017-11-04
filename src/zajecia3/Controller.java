@@ -1,18 +1,22 @@
 package zajecia3;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import zajecia3.components.EditNumberComponent;
-import zajecia3.components.LoginComponent;
-import zajecia3.components.LoginDialog;
-import zajecia3.components.SliderEditNumberComponent;
+import zajecia3.components.*;
+import zajecia3.model.News;
 import zajecia3.service.ApplicationService;
 
+import java.util.List;
 import java.util.function.BiPredicate;
 
 public class Controller {
@@ -22,6 +26,11 @@ public class Controller {
     @FXML
     VBox rightPanel;
 
+    @FXML
+    TableView tableNews;
+
+    @FXML
+    TableColumn<News,News> newsColumn;
     Label userLabel;
     boolean loggedIn = false;
 
@@ -32,6 +41,12 @@ public class Controller {
         rightPanel.getChildren().add(new Label("Panel na komponenty"));
         userLabel = new Label("(niezalogowany)");
         dolnybox.getChildren().add(userLabel);
+        newsColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        refreshNews();
+    }
+
+    public void refreshNews() {
+        tableNews.setItems(applicationService.getBazaNewsow());
     }
 
     //wykorzystanie komponentu edycji liczb
@@ -75,6 +90,16 @@ public class Controller {
         loggedIn = false;
         userLabel.setText("(niezalogowany)");
         return false;
+    }
+
+    public void showNewsDialog(){
+        NewNewsDialog newNewsDialog = new NewNewsDialog();
+        applicationService.addNews(newNewsDialog.getNews());
+    }
+
+    public void showFullText(){
+        News news = (News) tableNews.getSelectionModel().getSelectedItem();
+        FullTextDialog fullTextDialog = new FullTextDialog(news);
     }
 
 }
