@@ -31,13 +31,18 @@ public class FullTextDialog {
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
+        Label titleLabel = new Label("Title:");
+        titleLabel.setStyle("-fx-font-weight: bold;");
         Label titleOfNews = new Label(news.getTitle());
+
+        Label fulltextLabel = new Label("Text: ");
+        fulltextLabel.setStyle("-fx-font-weight: bold;");
         Label fulltext = new Label(news.getFulltext());
 
         grid.add(titleOfNews, 1, 0);
-        grid.add(new Label("Title:"), 0, 0);
+        grid.add(titleLabel, 0, 0);
         grid.add(fulltext, 1, 1);
-        grid.add(new Label("Text:"), 0, 1);
+        grid.add(fulltextLabel, 0, 1);
 
         dialog.getDialogPane().setContent(grid);
 

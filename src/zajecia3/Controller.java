@@ -94,12 +94,16 @@ public class Controller {
 
     public void showNewsDialog(){
         NewNewsDialog newNewsDialog = new NewNewsDialog();
-        applicationService.addNews(newNewsDialog.getNews());
+        if (newNewsDialog.getNews() != null){
+            applicationService.addNews(newNewsDialog.getNews());
+        }
     }
 
     public void showFullText(){
-        News news = (News) tableNews.getSelectionModel().getSelectedItem();
-        FullTextDialog fullTextDialog = new FullTextDialog(news);
+        if (tableNews.getSelectionModel().getSelectedItem() != null) {
+            News news = (News) tableNews.getSelectionModel().getSelectedItem();
+            FullTextDialog fullTextDialog = new FullTextDialog(news);
+            tableNews.getSelectionModel().clearSelection();
+        }
     }
-
 }

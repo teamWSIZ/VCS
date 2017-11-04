@@ -30,6 +30,7 @@ public class NewNewsDialog {
     public News getNews(){
         return news;
     }
+
     private void arrangeDialogElements() {
         dialog = new Dialog<>();
         dialog.setTitle("New News");
@@ -46,6 +47,7 @@ public class NewNewsDialog {
 
         TextField titleOfNews = new TextField();
         TextArea fulltext = new TextArea();
+        fulltext.setWrapText(true);
         titleOfNews.setPromptText("Title of News");
         fulltext.setPromptText("Insert News!");
 
