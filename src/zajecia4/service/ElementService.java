@@ -23,7 +23,9 @@ public class ElementService {
     public void init() {
         String fromFile = "427,66,75\n" +
                 "458,66,66\n" +
-                "497,65,65";
+                "528,66,56\n" +
+                "561,66,55\n" +
+                "882,130,baggage1";
         String[] elems = fromFile.split("\n");
         for(String s : elems) {
             String[] dd = s.split(",");

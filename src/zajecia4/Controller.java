@@ -30,6 +30,9 @@ public class Controller {
         initalizeMapOfElements();
     }
 
+    /**
+     * Rysuje pociąg na canvasie
+     */
     private void renderTrain() {
         gc.drawImage(imageService.getMainCar(), 5, 5);
     }
@@ -44,7 +47,7 @@ public class Controller {
             public void handle(MouseEvent event) {
                 int x = (int)event.getX();
                 int y = (int)event.getY();
-//                System.out.println("Kliknięto na " + x + " , " + y);
+                System.out.println("Kliknięto na " + x + " , " + y);
 //                new MapSeatDialog(x, y);
                 System.out.println("Element: " +
                         elementService.getElementByPosition(x, y));
