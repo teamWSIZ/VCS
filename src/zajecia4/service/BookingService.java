@@ -38,6 +38,17 @@ public class BookingService {
         return bookings.get(trainId);
     }
 
+    public SeatStatus getBookingForTrainAndSeat(Integer trainId, String elementId) {
+        Set<SeatStatus> statuses = bookings.get(trainId);
+        if (statuses==null) return null;
+        for(SeatStatus ss : statuses) {
+            if (ss.getSeatElementId().equals(elementId)) {
+                return ss;
+            }
+        }
+        return null;
+    }
+
     /**
      * Próbuje zarezerwować miejsce w danym pociągu.
      *

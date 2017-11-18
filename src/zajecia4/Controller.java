@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -63,8 +64,33 @@ public class Controller {
                 System.out.println("Element: " +
                         elementService.getElementByPosition(x, y));
 
+                String elementId = elementService.getElementByPosition(x,y);
+                if (elementId!=null) {
+                    toggleReservationOnSeat(elementId);
+                }
             }
         });
+    }
+
+    private void toggleReservationOnSeat(String elementId) {
+
+        SeatStatus ss = bookingService.getBookingForTrainAndSeat(1, elementId);
+
+        if (ss == null) return;
+        if (ss.getBookingStatus().equals(BookingStatus.FREE)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Rezerwacja miejsca");
+            alert.setHeaderText("...");
+            alert.setContentText("Rezerwacja miejsca " + elementId);
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Rezygnacja z rezerwacji miejsca");
+            alert.setHeaderText("...");
+            alert.setContentText("Rezygnacja rezerwacji miejsca " + elementId);
+            alert.showAndWait();
+        }
+
     }
 
 
