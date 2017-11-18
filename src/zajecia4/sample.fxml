@@ -46,9 +46,10 @@
         </left>
 
         <bottom>
-            <HBox alignment="CENTER_LEFT">
+            <VBox alignment="CENTER_LEFT">
                 <Button onAction="#showMappedElements"> Show mapped elements </Button>
-            </HBox>
+                <Button onAction="#showBookings"> Show bookings </Button>
+            </VBox>
         </bottom>
 
     </BorderPane>

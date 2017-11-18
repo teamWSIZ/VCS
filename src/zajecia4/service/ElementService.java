@@ -57,6 +57,14 @@ public class ElementService {
         return null;
     }
 
+    public Pair<Integer,Integer> getPositionOfElement(String elementId) {
+        for(Pair<Integer,Integer> position : mapToElement.keySet()) {
+            String element = mapToElement.get(position);
+            if (element.equals(elementId)) return position;
+        }
+        return null;
+    }
+
     public Set<Pair<Integer,Integer>> getMappedElementPositions() {
         return mapToElement.keySet();
     }
