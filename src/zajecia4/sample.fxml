@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.HBox?>
 <VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="zajecia4.Controller">
     <MenuBar fx:id="menuBar">
@@ -45,6 +46,9 @@
         </left>
 
         <bottom>
+            <HBox alignment="CENTER_LEFT">
+                <Button onAction="#showMappedElements"> Show mapped elements </Button>
+            </HBox>
         </bottom>
 
     </BorderPane>

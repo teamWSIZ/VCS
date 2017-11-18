@@ -4,7 +4,9 @@ package zajecia4.service;
 import javafx.util.Pair;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Dla danego punktu podaje nazwę elementu który się znajduje w pobliżu
@@ -21,7 +23,11 @@ public class ElementService {
      * Ma wczytać mapowanie z pliku
      */
     public void init() {
-        String fromFile = "427,66,75\n" +
+        String fromFile =
+                "424,66,75\n" +
+                "389,66,76\n" +
+                "392,129,72\n" +
+                "358,66,85\n" +
                 "458,66,66\n" +
                 "528,66,56\n" +
                 "561,66,55\n" +
@@ -35,6 +41,11 @@ public class ElementService {
         }
     }
 
+    /**
+     * Podaje string opisujący element blisko punktu (x,y).
+     * (Blisko tzn. element którego położenie jest nie dalej niż RADIUS od (x,y))
+     * Jeśli nie ma takiego elementu, zwraca null.
+     */
     public String getElementByPosition(int x, int y) {
         for(Pair<Integer,Integer> position : mapToElement.keySet()) {
             int xx = position.getKey();
@@ -44,7 +55,13 @@ public class ElementService {
             }
         }
         return null;
-
     }
 
+    public Set<Pair<Integer,Integer>> getMappedElementPositions() {
+        return mapToElement.keySet();
+    }
+
+    public Integer getRADIUS() {
+        return RADIUS;
+    }
 }

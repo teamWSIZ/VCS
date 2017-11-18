@@ -4,6 +4,9 @@ package zajecia4.service;
 import javafx.scene.image.Image;
 import zajecia4.Main;
 
+/**
+ * po co to...
+ */
 public class ImageService {
     public static final String path = "res/";
 
