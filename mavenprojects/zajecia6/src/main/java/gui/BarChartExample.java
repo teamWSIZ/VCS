@@ -1,37 +1,19 @@
 package gui;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
+import java.util.Arrays;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
+import javafx.stage.Stage;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.HBox;
 
-import java.io.File;
-import java.util.Random;
-import java.util.Arrays;
-
-public class NotesController {
-
-    @FXML
-    HBox fff;
-
-    public void doSomething() throws Exception {
-        System.out.println("Sure, I'm doing it!");
-
-        //zapisywanie
-        String doZapisu = "Trump claims he took himself out of the running for Time's 'Person of the Year'";
-        File file = new File("test.txt");
-        Files.write(doZapisu, file, Charsets.UTF_8);
-
-        //wczytywanie
-        String result = Files.toString(file, Charsets.UTF_8);
-
-
-
+public class BarChartExample extends Application {
+    @Override
+    public void start(Stage stage) {
         //Defining the axes
         CategoryAxis xAxis = new CategoryAxis() ;
         xAxis.setCategories(FXCollections.<String>
@@ -70,18 +52,24 @@ public class NotesController {
         //Setting the data to bar chart
         barChart.getData() .addAll(series1, series2, series3);
 
-        fff.getChildren().add(barChart);
+        /////
 
+        //Creating a Group object
+        Group root = new Group(barChart) ;
 
+        //Creating a scene object
+        Scene scene = new Scene(root, 600, 400) ;
+
+        //Setting title to the Stage
+        stage.setTitle("Bar Chart") ;
+
+        //Adding scene to the stage
+        stage.setScene(scene) ;
+
+        //Displaying the contents of the stage
+        stage.show() ;
     }
-
-    public double[] generateRandomNumbers(int n) {
-        Random r = new Random();
-        double[] aaa = new double[n];
-        for (int i = 0; i < n; i++) {
-            aaa[i] = r.nextGaussian();
-        }
-        return aaa;
+    public static void main(String args[]) {
+        launch(args) ;
     }
-    
 }

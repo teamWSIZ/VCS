@@ -38,6 +38,10 @@
         </menus>
     </MenuBar>
 
+    <HBox fx:id="fff">
+
+    </HBox>
+
     <HBox>
         <Button onAction="#doSomething"> Click me!</Button>
     </HBox>
