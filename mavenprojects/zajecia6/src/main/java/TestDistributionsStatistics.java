@@ -1,3 +1,4 @@
+import org.apache.commons.math3.distribution.BetaDistribution;
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.distribution.WeibullDistribution;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
@@ -24,6 +25,11 @@ public class TestDistributionsStatistics {
         }
 
 
+        BetaDistribution betaDistribution = new BetaDistribution(2, 1);    //k=5, beta=1
+        for (int i = 0; i < 100; i++) {
+            double val = weibullDistribution.sample();
+            System.out.println(val);
+        }
 
 
 

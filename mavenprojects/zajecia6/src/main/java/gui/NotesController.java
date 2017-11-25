@@ -7,6 +7,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import org.apache.commons.math3.distribution.BetaDistribution;
 import org.apache.commons.math3.distribution.WeibullDistribution;
 
 import java.util.Random;
@@ -65,7 +66,7 @@ public class NotesController {
     public void printWeibullHisto() {
         double alpha = Double.valueOf(a.getText());
         double beta = Double.valueOf(b.getText());
-        WeibullDistribution weibullDistribution = new WeibullDistribution(alpha, beta);    //k=5, beta=1
+        BetaDistribution weibullDistribution = new BetaDistribution(alpha, beta);    //k=5, beta=1
         double[] data = weibullDistribution.sample(100_000);
         double binWidth = 0.05;
         int binCount = 30;

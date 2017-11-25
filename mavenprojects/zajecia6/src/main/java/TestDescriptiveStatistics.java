@@ -21,6 +21,8 @@ public class TestDescriptiveStatistics {
         System.out.println(median);
         System.out.println(standardDeviation);
 
+        System.out.println(descriptiveStatistics.getQuadraticMean());
+
 
 
     }
