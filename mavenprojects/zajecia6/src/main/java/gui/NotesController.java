@@ -34,41 +34,30 @@ public class NotesController {
 
         //Defining the axes
         CategoryAxis xAxis = new CategoryAxis() ;
-        xAxis.setCategories(FXCollections.<String>
-                observableArrayList(Arrays.asList("Speed", "User rating" , "Milage" , "Safety") ));
-        xAxis.setLabel("category") ;
+
+//        xAxis.setCategories(FXCollections.<String>
+//                observableArrayList(Arrays.asList("Speed", "User rating" , "Milage" , "Safety") ));
+//
+//        xAxis.setLabel("category") ;
 
         NumberAxis yAxis = new NumberAxis() ;
-        yAxis.setLabel("score") ;
+        yAxis.setLabel("population") ;
 
         //Creating the Bar chart
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis) ;
-        barChart.setTitle("Comparison between various cars") ;
 
         //Prepare XYChart.Series objects by setting data
         XYChart.Series<String, Number> series1 = new XYChart.Series<>() ;
         series1.setName("Fiat") ;
-        series1.getData() .add(new XYChart.Data<>("Speed", 1.0) );
-        series1.getData() .add(new XYChart.Data<>("User rating", 3.0) );
-        series1.getData() .add(new XYChart.Data<>("Milage", 5.0) );
-        series1.getData() .add(new XYChart.Data<>("Safety", 5.0) );
 
-        XYChart.Series<String, Number> series2 = new XYChart.Series<>() ;
-        series2.setName("Audi") ;
-        series2.getData() .add(new XYChart.Data<>("Speed", 5.0) );
-        series2.getData() .add(new XYChart.Data<>("User rating", 6.0) );
-        series2.getData() .add(new XYChart.Data<>("Milage", 10.0) );
-        series2.getData() .add(new XYChart.Data<>("Safety", 4.0) );
 
-        XYChart.Series<String, Number> series3 = new XYChart.Series<>() ;
-        series3.setName("Ford") ;
-        series3.getData() .add(new XYChart.Data<>("Speed", 4.0) );
-        series3.getData() .add(new XYChart.Data<>("User rating", 2.0) );
-        series3.getData() .add(new XYChart.Data<>("Milage", 3.0) );
-        series3.getData() .add(new XYChart.Data<>("Safety", 6.0) );
+        for (int i = 0; i < 10; i++) {
+            //tu dodajemy dane typu "x" --> "y"
+            series1.getData() .add(new XYChart.Data<>("" + i , (int)(10 * Math.sin(1. * i / 3) )) );
+        }
 
         //Setting the data to bar chart
-        barChart.getData() .addAll(series1, series2, series3);
+        barChart.getData() .addAll(series1);
 
         fff.getChildren().add(barChart);
 
