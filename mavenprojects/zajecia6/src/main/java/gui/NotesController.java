@@ -3,6 +3,7 @@ package gui;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -18,6 +19,9 @@ public class NotesController {
 
     @FXML
     HBox fff;
+
+    XYChart.Series<String, Number> series1;
+
 
     public void doSomething() throws Exception {
         System.out.println("Sure, I'm doing it!");
@@ -47,13 +51,15 @@ public class NotesController {
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis) ;
 
         //Prepare XYChart.Series objects by setting data
-        XYChart.Series<String, Number> series1 = new XYChart.Series<>() ;
+        //
+
+        series1 = new XYChart.Series<>() ;
         series1.setName("Fiat") ;
 
 
         for (int i = 0; i < 10; i++) {
             //tu dodajemy dane typu "x" --> "y"
-            series1.getData() .add(new XYChart.Data<>("" + i , (int)(10 * Math.sin(1. * i / 3) )) );
+            series1.getData().add(new XYChart.Data<>("" + i , (int)(10 * Math.sin(1. * i / 3) )) );
         }
 
         //Setting the data to bar chart
@@ -72,5 +78,8 @@ public class NotesController {
         }
         return aaa;
     }
-    
+
+    public void dodaj() {
+        series1.getData().add(new XYChart.Data<>("" + 100 , (int)(10 * Math.sin(1. * 5 / 3) )) );
+    }
 }
