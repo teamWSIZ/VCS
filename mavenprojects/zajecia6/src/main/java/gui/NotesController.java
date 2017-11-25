@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
 import java.io.File;
+import java.util.Random;
 
 public class NotesController {
 
@@ -20,4 +21,14 @@ public class NotesController {
 
 
     }
+
+    public double[] generateRandomNumbers(int n) {
+        Random r = new Random();
+        double[] aaa = new double[n];
+        for (int i = 0; i < n; i++) {
+            aaa[i] = r.nextGaussian();
+        }
+        return aaa;
+    }
+    
 }
