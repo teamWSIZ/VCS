@@ -1,5 +1,4 @@
 .idea/*
 *.iml
 out/*
-*.txt
 *.DS_Store
