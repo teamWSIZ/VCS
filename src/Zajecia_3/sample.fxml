@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Zajecia_3.Controller">
+    <MenuBar fx:id="menuBar">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="New" />
+                    <MenuItem text="Open"/>
+                    <SeparatorMenuItem />
+                    <MenuItem text="Exit" />
+                </items>
+            </Menu>
+            <Menu fx:id="toolsMenu" text="Tools">
+                <items>
+                    <MenuItem text="Tool 1" />
+                    <Menu text="Unspecified Menu">
+                        <items>
+                            <MenuItem text="Action 1" />
+                        </items>
+                    </Menu>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <BorderPane>
+        <top>
+            <HBox alignment="CENTER">
+                <Button onAction="#addEditNumberComponent"> Dodaj EditNumberComponent </Button>
+                <Button onAction="#addSliderEditNumberComponent"> Dodaj EditNumberComponent </Button>
+            </HBox>
+        </top>
+
+        <right>
+            <VBox fx:id="rightPanel">
+
+            </VBox>
+        </right>
+
+        <left>
+            <VBox style="-fx-border-style: solid;-fx-border-radius: 5">
+            </VBox>
+        </left>
+
+        <bottom>
+            <VBox alignment="CENTER">
+                <Label>Dolny panel</Label>
+                <HBox fx:id="dolnybox" style="-fx-border-style: solid">
+                    <Button > Add something </Button>
+                </HBox>
+            </VBox>
+        </bottom>
+    </BorderPane>
+
+</VBox>
